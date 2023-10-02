@@ -1,37 +1,46 @@
-let posX, posY, diam, rad; 
-let espesor = 34;
-let margen = 50;
-
+let posX, posY, diam, rad;
+let esp;
+let margen;
 let piso;
-let velo = 10;
+let acel;
 
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
-  posX = windowWidth / 2;
-  posY = 100;
-  rectMode(CENTER);
-  piso = windowHeight - margen - espesor / 2;
-  frameRate(10);
-  diam = 50;
-  rad = diam / 2;
-
+createCanvas(windowWidth, windowHeight);
+posX = windowWidth / 2;
+posY = windowHeight * 0.2;
+rectMode(CENTER);
+diam = random(10, 50);
+rad = diam / 2;
+esp = 50;
+margen = 40;
+piso = windowHeight - margen - esp / 2;
+vel = 0;
+acel = 0.98;
+    // frameRate(3);
 }
 
+
 function draw() {
-  background(0, 200, 175, 70);
-  noStroke();
 
+    background(255, 150, 70);
 
-  posY+= velo;
-  
-  if (posY > piso - rad) {
-    velo *= -1;
-  }
-  
-  fill(255);
-  circle(posX, posY, 50);
-  
-  fill(255, 0, 0);
-  rect(windowHeight * 0.5, windowHeight - margen, windowWidth * 0.8, espesor);
+    actualizar();
+
+    noStroke();
+    fill(255, 100, 0);
+    circle(posX, posY, 20);
+    fill(100, 50, 0);
+    rect(windowWidth / 2, windowHeight - margen, windowWidth, esp);
+}
+
+function actualizar() {
+    vel += acel;
+    posY += vel;
+    
+    if (posY >= piso - rad) {
+        print('ya');
+        vel *= -1;
+        posY += vel;
+    }
 }
