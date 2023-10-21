@@ -23,14 +23,14 @@ acel = 0.98;
 
 function draw() {
 
-    background(255, 150, 70);
+    background(10, 150, 70);
 
     actualizar();
 
     noStroke();
-    fill(255, 100, 0);
+    fill(105, 25, 105);
     circle(posX, posY, 20);
-    fill(100, 50, 0);
+    fill(200, 50, 30);
     rect(windowWidth / 2, windowHeight - margen, windowWidth, esp);
 }
 
